@@ -13,21 +13,22 @@
 
 $app->get('/', function () use ($app) {
     
-    // TODO: glob files in static/js e static/css    
+    // Ricava elenco scripts
+    $scripts = [];
+    $fileList = glob(base_path('public') . '/static/js/*.js');
+    foreach ($fileList as $file) {
+        $type = explode('.', basename($file))[0];
+        $scripts[$type] = '/static/js/' . basename($file);
+    }
     
-    $styles = [
-        'style1'
-    ];
+    // Ricava elenco css
+    $styles = array_map(function($style) {
+        return '/static/css/' . basename($style);
+    }, glob(base_path('public') . '/static/css/*.css'));
     
-    $scripts = [
-        'script1',
-        'script2'
-    ];
-    
-    $data = [
+    // Effettua render della view
+    return view('index', [
         'styles' => $styles,
         'scripts' => $scripts
-    ];
-    
-    return view('index', $data);
+    ]);
 });
