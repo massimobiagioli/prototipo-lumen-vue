@@ -1,36 +1,28 @@
 <template>
-  <v-app id="demo" left-fixed-sidebar>
-    <v-toolbar>
-      <v-toolbar-side-icon @click.native.stop="nav2 = !nav2" />
-      <v-toolbar-logo>Toolbar</v-toolbar-logo>
-    </v-toolbar>
-    <main>
-      <v-sidebar left fixed drawer v-model="nav2">
-        <v-list>
-          <v-list-item v-for="i in 3" :key="i">
-            <v-list-tile>
-              <v-list-tile-title>Item {{ i }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list-item>
-        </v-list>
-      </v-sidebar>
-      <v-content>
-        <v-container fluid>
-          <div class="title">Main Content</div>
-        </v-container>
-      </v-content>
-    </main>
-  </v-app>
+  <v-container fluid class="text-xs-center">
+    <v-row>
+      <v-col xs12 sm6>
+        <v-card>
+          <v-card-row class="blue darken-1">
+            <v-card-title>
+              <span class="white--text">Home</span>
+            </v-card-title>
+          </v-card-row>
+          <v-card-text>
+            <v-card-row>
+              <div>
+                <span>todo ....</span>
+              </div>
+            </v-card-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
-  name: 'home',
-  data () {
-    return {
-      msg: 'Home Page',
-      nav2: false
-    }
-  }
+  name: 'home'
 }
 </script>
